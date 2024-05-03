@@ -25,8 +25,10 @@ interface Candidate {
     id: number;
   }
 
+const baseUrl = "https://altworld-backend.vercel.app";
+
 const getData = async(): Promise<Candidate[]> =>{
-    const res = await axios.get<Candidate[]>('http://localhost:3001/candidates')
+    const res = await axios.get<Candidate[]>(`${baseUrl}/candidates`);
     
     const data = await res.data;
     return data;
