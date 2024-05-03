@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Flex } from '@chakra-ui/react';
+import Dashboard from './Components/Dashboard';
 
 function App() {
   return (
     <div className="App">
-      
+      <Dashboard />
     </div>
   );
 }
