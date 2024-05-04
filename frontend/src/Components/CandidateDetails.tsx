@@ -36,7 +36,16 @@ const flexStyleProps = {
 const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
   
   if(!candidate){
-    return <Text>No Candidate selected</Text>
+    return (
+      <Box
+      w={{base:"100%", md:'70%'}}
+      display='flex'
+      flexDirection={'column'}
+      justifyContent='center'
+      >
+        <Heading fontSize={{base:'1.5rem', md:'2rem'}} color='gray.700'>No Candidate Selected.</Heading>
+        <Text color='gray.500'>Click on the candidate to see the details.</Text>
+      </Box>)
   }
 
   return (
