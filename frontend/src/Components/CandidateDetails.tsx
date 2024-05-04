@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Image, Input, Progress, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Image, Input, Progress, Stack, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import React from 'react';
 
@@ -37,79 +37,100 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
   }
 
   return (
-    <Stack
-    w={'68%'} 
-    bgColor='white'
-    padding='10px'
-    borderRadius='10px'
-    boxShadow='base'
-    >
-      <Flex>
-        <Flex>
-          <Image src={ candidate.avatar} />
-            <Stack>
-              <Heading>{candidate.name}</Heading>
-              <Text>{candidate.email}</Text>
-            </Stack>
-        </Flex>
-      </Flex>
+    <Flex>
+      <Stack
+        w={'68%'} 
+        bgColor='white'
+        padding='10px'
+        borderRadius='10px'
+        boxShadow='base'
+        >
+          <Flex
+          alignItems='center' 
+          justifyContent="space-between"
+          >
+            <Flex gap='10px'
+            alignItems='center'
+            >
+              <Image
+              w="70px"
+              h="70px"
+              borderRadius='10px'
+              src={ candidate.avatar} />
+                <Stack
+                textAlign='left'
+                gap='2px'
+                >
+                  <Heading fontSize='14px'>{candidate.name}</Heading>
+                  <Text fontSize='12px'>{candidate.email}</Text>
+                </Stack>
+            </Flex>
 
-      <Stack>
-        <Flex>
-          <Text>Behavioural</Text>
-          {/* <Progress value={80} /> */}
-          <input type='range' style={{
-            background: 'linear-gradient(to right, blue, yellow)',
-            borderColor: 'blue',
-            // outline:'none'
-          }} value={candidate.behavioural*10} />
-          <Text>{candidate.behavioural}/10</Text>
-        </Flex>
+            <Box>
+              <Text 
+              fontWeight='bold' 
+              color={(candidate.score >=50)?"green.400":"orange.400"} >{candidate.score}%</Text>
+            </Box>
+          </Flex>
 
-        <Flex>
-          <Text>Communication</Text>
-          {/* <Progress value={80} /> */}
-          <input type='range' style={{
-            background: 'linear-gradient(to right, blue, yellow)',
-            borderColor: 'blue',
-            // outline:'none'
-          }} value={candidate.communication*10} />
-          <Text>{candidate.communication}/10</Text>
-        </Flex>
+          <Stack>
+            <Flex>
+              <Text>Behavioural</Text>
+              {/* <Progress value={80} /> */}
+              <input type='range' style={{
+                background: 'linear-gradient(to right, blue, yellow)',
+                borderColor: 'blue',
+                // outline:'none'
+              }} value={candidate.behavioural*10} />
+              <Text>{candidate.behavioural}/10</Text>
+            </Flex>
 
-        <Flex>
-          <Text>Situation Handling</Text>
-          {/* <Progress value={80} /> */}
-          <input type='range' style={{
-            background: 'linear-gradient(to right, blue, yellow)',
-            borderColor: 'blue',
-            // outline:'none'
-          }} value={candidate["situation handling"]*10} />
-          <Text>{candidate["situation handling"]}/10</Text>
-        </Flex>
-        
-      </Stack>
+            <Flex>
+              <Text>Communication</Text>
+              {/* <Progress value={80} /> */}
+              <input type='range' style={{
+                background: 'linear-gradient(to right, blue, yellow)',
+                borderColor: 'blue',
+                // outline:'none'
+              }} value={candidate.communication*10} />
+              <Text>{candidate.communication}/10</Text>
+            </Flex>
 
-      <Stack>
-        <Heading>About</Heading>
-        <Text>{candidate.about}</Text>
-      </Stack>
+            <Flex>
+              <Text>Situation Handling</Text>
+              {/* <Progress value={80} /> */}
+              <input type='range' style={{
+                background: 'linear-gradient(to right, blue, yellow)',
+                borderColor: 'blue',
+                // outline:'none'
+              }} value={candidate["situation handling"]*10} />
+              <Text>{candidate["situation handling"]}/10</Text>
+            </Flex>
+              
+          </Stack>
 
-      <Stack>
-        <Heading>Experience</Heading>
-        <Text>{candidate.experience}</Text>
-      </Stack>
-      <Stack>
-        <Heading>Hobbies</Heading>
-        <Text>{candidate.hobbies}</Text>
-      </Stack>
-      <Stack>
-        <Heading>Introduction</Heading>
-        <Text>{candidate.introduction}</Text>
-      </Stack>
+          <Stack>
+            <Heading>About</Heading>
+            <Text>{candidate.about}</Text>
+          </Stack>
 
-      <Button>SHORTLIST</Button>
-    </Stack>
+          <Stack>
+            <Heading>Experience</Heading>
+            <Text>{candidate.experience}</Text>
+          </Stack>
+          <Stack>
+            <Heading>Hobbies</Heading>
+            <Text>{candidate.hobbies}</Text>
+          </Stack>
+          <Stack>
+            <Heading>Introduction</Heading>
+            <Text>{candidate.introduction}</Text>
+          </Stack>
+
+          <Button>SHORTLIST</Button>
+        </Stack>
+    </Flex>
+    
   )
 }
 
