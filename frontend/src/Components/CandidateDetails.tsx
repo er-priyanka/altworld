@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Heading, Image, Input, Progress, Stack, Text } from '@chakra-ui/react';
+import ProgressBar from '@ramonak/react-progress-bar';
 import axios from 'axios';
 import React from 'react';
 
@@ -29,7 +30,9 @@ interface CandidateDetailsProps {
 //   return data;
 // }
 
-
+const flexStyleProps = {
+  
+}
 const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
   
   if(!candidate){
@@ -68,43 +71,70 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
 
             <Box>
               <Text 
-              fontWeight='bold' 
+              fontWeight='bold'
+              fontSize={{lg:'xl'}} 
               color={(candidate.score >=50)?"green.400":"orange.400"} >{candidate.score}%</Text>
             </Box>
           </Flex>
 
           <Stack>
-            <Flex>
-              <Text>Behavioural</Text>
-              {/* <Progress value={80} /> */}
-              <input type='range' style={{
-                background: 'linear-gradient(to right, blue, yellow)',
-                borderColor: 'blue',
-                // outline:'none'
-              }} value={candidate.behavioural*10} />
-              <Text>{candidate.behavioural}/10</Text>
+            <Flex 
+            w={'100%'} 
+            justifyContent={'space-between'}
+            alignItems={'center'}
+            fontWeight='bold'
+            >
+              <Text
+              color={'gray.500'}
+              >Behavioural</Text>
+              <Progress
+              width='50%'
+              borderRadius='15px'
+              colorScheme={(candidate.behavioural > 6) ? "blue" : "orange"}
+              value={candidate.behavioural*10}
+               />
+              <Text
+              color={(candidate.behavioural>6)?"green.400":"orange.400"}
+              >{candidate.behavioural}/10</Text>
             </Flex>
 
-            <Flex>
-              <Text>Communication</Text>
-              {/* <Progress value={80} /> */}
-              <input type='range' style={{
-                background: 'linear-gradient(to right, blue, yellow)',
-                borderColor: 'blue',
-                // outline:'none'
-              }} value={candidate.communication*10} />
-              <Text>{candidate.communication}/10</Text>
+            <Flex
+            w={'100%'} 
+            justifyContent={'space-between'}
+            alignItems={'center'}
+            fontWeight='bold'
+            >
+              <Text
+              color='gray.500'
+              >Communication</Text>
+              <Progress borderRadius='15px' width={'50%'} value={candidate.communication * 10} />
+              
+              <Text
+              color={candidate.communication>6 ? "green.400" : "orange.400"}
+              >{candidate.communication}/10</Text>
             </Flex>
 
-            <Flex>
-              <Text>Situation Handling</Text>
+            <Flex
+            w={'100%'} 
+            justifyContent={'space-between'}
+            alignItems={'center'}
+            fontWeight='bold'
+            
+            >
+              <Text 
+              color='gray.500'
+              >Situation Handling</Text>
               {/* <Progress value={80} /> */}
-              <input type='range' style={{
-                background: 'linear-gradient(to right, blue, yellow)',
-                borderColor: 'blue',
-                // outline:'none'
-              }} value={candidate["situation handling"]*10} />
-              <Text>{candidate["situation handling"]}/10</Text>
+              <Progress
+              width={'50%'}
+              borderRadius={'15px'}
+              colorScheme={(candidate["situation handling"] > 6) ? "blue" : "orange"}
+              value={candidate["situation handling"]*10}
+              
+               />
+              <Text 
+              color={(candidate["situation handling"]>6) ? "green.400" : "orange.400"}
+              >{candidate["situation handling"]}/10</Text>
             </Flex>
               
           </Stack>
