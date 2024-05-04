@@ -2,6 +2,7 @@ import { Box, Button, Container, Flex, Heading, Image, Stack, Table, Tbody, Td, 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CandidateDetails from './CandidateDetails';
+import candidatesData from "../Data/db.json";
 
 // const data = [
 //     {
@@ -27,28 +28,28 @@ interface Candidate {
 
 const baseUrl = "https://altworld-backend.vercel.app";
 
-const getData = async(): Promise<Candidate[]> =>{
-    const res = await axios.get<Candidate[]>(`${baseUrl}/candidates`);
+// const getData = async(): Promise<Candidate[]> =>{
+//     const res = await axios.get<Candidate[]>(`${baseUrl}/candidates`);
     
-    const data = await res.data;
-    return data;
-}
+//     const data = await res.data;
+//     return data;
+// }
 
 const Dashboard: React.FC = () => {
-    const [data, setData] = useState<Candidate[]>([]);
+    const [data, setData] = useState<Candidate[]>(candidatesData.candidates);
     const [candidate, setCandidate] = useState<Candidate | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(()=>{
-        getData().then(res=>{
-            console.log(res);
-            setData(res);
-        }).catch(err=>{
-            console.log(err);
-            setError(err.message);
-        });
+    // useEffect(()=>{
+    //     // getData().then(res=>{
+    //     //     console.log(res);
+    //     //     setData(res);
+    //     // }).catch(err=>{
+    //     //     console.log(err);
+    //     //     setError(err.message);
+    //     // });
  
-    }, []);
+    // }, []);
 
   return (
     <Box>
