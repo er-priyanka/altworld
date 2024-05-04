@@ -1,8 +1,11 @@
-import { Box, Button, Container, Flex, Heading, Image, Stack, Table, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Heading, Image, Stack, Tab, Table, TabList, TabPanel, TabPanels, Tabs, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CandidateDetails from './CandidateDetails';
 import candidatesData from "../Data/db.json";
+import Sidebar from './Sidebar';
+import { MdEdit } from "react-icons/md";
+import CandidateList from './CandidateList';
 
 // const data = [
 //     {
@@ -26,7 +29,7 @@ interface Candidate {
     id: number;
   }
 
-const baseUrl = "https://altworld-backend.vercel.app";
+// const baseUrl = "https://altworld-backend.vercel.app";
 
 // const getData = async(): Promise<Candidate[]> =>{
 //     const res = await axios.get<Candidate[]>(`${baseUrl}/candidates`);
@@ -40,109 +43,130 @@ const Dashboard: React.FC = () => {
     const [candidate, setCandidate] = useState<Candidate | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    // useEffect(()=>{
-    //     // getData().then(res=>{
-    //     //     console.log(res);
-    //     //     setData(res);
-    //     // }).catch(err=>{
-    //     //     console.log(err);
-    //     //     setError(err.message);
-    //     // });
- 
-    // }, []);
+    
 
   return (
-    <Box>
+    <Box  bgColor="#F8F9FA">
         <Flex>
-            <Stack>
-                <Flex>
-                    <Text>Hi, Altworld</Text>
-                </Flex>
+            <Sidebar />
 
-                <Flex>
-                    <Text>Dashboard</Text>
-                </Flex>
-
-                <Stack>
-                    <Text>
-                        New Assignment?
-                    </Text>
-                    <Text>
-                        Select from pro-defined questions to have a quick tunaround.
-                    </Text>
-                    <Button>Create New Assignment</Button>
-                </Stack>
-            </Stack>
-
-            <Box>
-                <Stack>
-                    <Text>
-                        Pages / <span>Assignment</span>
+            <Box
+            w={'80%'}
+            padding='20px' 
+            >
+                <Stack 
+                textAlign='left'
+                gap='5px'
+                >
+                    <Text 
+                    color='gray.400'
+                    fontSize='12px'
+                    >
+                        Pages / <span style={{color:'black'}}>Assignment</span>
                     </Text>
 
-                    <Heading>Sales BDE</Heading>
+                    <Heading fontSize='14px'>Sales BDE</Heading>
                 </Stack>
 
-                <Flex>
+                <Flex
+                padding='20px 0'
+                gap={'10px'}
+                // border={'1px'}
+                >
                     {/* first stack */}
-                    <Stack>
+                    <Stack 
+                    w={{lg:'30%'}}
+                    bgColor='white'
+                    padding='10px'
+                    borderRadius='10px'
+                    boxShadow='base'
+                    >
                         {/* top view */}
-                        <Flex>
-                            <Heading>Sales BDE</Heading>
-                            <Flex>
-                                <Text>Active</Text>
-                                <Button>Edit</Button>
+                        <Flex
+                        justifyContent='space-between'
+                        alignItems='center'
+                        >
+                            <Heading fontSize='1.1rem'>Sales BDE</Heading>
+                            <Flex
+                            alignItems='center'
+                            gap='8px'
+                            fontSize='1.1rem'
+                            >
+                                <Text
+                                fontWeight='500'
+                                color='green.400'
+                                >Active</Text>
+                                <Box
+                                bgColor='white'
+                                borderRadius='5px'
+                                padding='5px'
+                                fontSize={'12px'}
+                                boxShadow='md'
+                                >
+                                    <MdEdit />
+                                </Box>
                             </Flex>
                         </Flex>
 
-                        <Box>
-                            <Flex>
-                                <Text>Assignment Link</Text>
-                                <Text>https://tiny.url/asknakdna/</Text>
+                        <Box fontSize={'14px'}
+                         fontWeight='500' 
+                         color={'gray.500'}
+                        >
+                            <Flex
+                            justifyContent={'space-between'}
+                            >
+                                <Text
+                                >Assignment Link</Text>
+                                <Text
+                                color={'blue.400'}
+                                >https://tiny.url/asknakdna/</Text>
                             </Flex>
-                            <Flex>
+                            <Flex
+                            justifyContent={'space-between'}
+                            >
                                 <Text>Assignment Hour</Text>
                                 <Text>3 hours</Text>
                             </Flex>
 
-                            <Flex>
+                            <Flex
+                            justifyContent={'space-between'}
+                            >
                                 <Text>Assignment Ends at</Text>
                                 <Text>11 March 2024</Text>
                             </Flex>
                         </Box>
 
-                        <Flex>
-                            <Button>TO REVIEW</Button>
-                            <Button>SHORTLISTED</Button>
-                        </Flex>
+                        
 
-                        <Table>
-                            <Thead>
-                                <Tr>
-                                    <Th>CANDIDATE</Th>
-                                    <Th>SCORE</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                                {
-                                    data && data.map((el, i) =>(
-                                        <Tr key={i} onClick={()=>setCandidate(el)}>
-                                            <Td>
-                                                <Flex>
-                                                    <Image src={el.avatar} />
-                                                    <Stack>
-                                                        <Heading>{el.name}</Heading>
-                                                        <Text>{el.email}</Text>
-                                                    </Stack>
-                                                </Flex>
-                                            </Td>
+                        <Tabs variant='unstyled'
+                        marginTop='20px'
+                        >
+                            <TabList
+                            >
+                                <Tab
+                                 fontSize='12px'
+                                 fontWeight='bold'
+                                 color='blackAlpha.700'
+                                _selected={{boxShadow:'md', borderRadius:"10px" }}
+                                >TO REVIEW</Tab>
+                                <Tab
+                                fontSize='12px'
+                                fontWeight='bold'
+                                color='blackAlpha.700'
+                                _selected={{boxShadow:'md', borderRadius:"10px" }}
+                                >SHORTLISTED</Tab>
+                            </TabList>
+                            <TabPanels>
+                                <TabPanel>
+                                    <CandidateList setCandidate={setCandidate} data = {data} />
+                                </TabPanel>
+                                <TabPanel>
+                                    <CandidateList setCandidate={setCandidate} data = {data} />
+                                </TabPanel>
+                            </TabPanels>
+                        </Tabs>
 
-                                            <Td>{el.score}%</Td>
-                                        </Tr>
-                                    ))
-                                }
-                            </Tbody>
-                        </Table>
+                     
                         
                     </Stack>
                     

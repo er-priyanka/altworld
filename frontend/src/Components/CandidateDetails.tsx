@@ -37,7 +37,13 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
   }
 
   return (
-    <Stack>
+    <Stack
+    w={'68%'} 
+    bgColor='white'
+    padding='10px'
+    borderRadius='10px'
+    boxShadow='base'
+    >
       <Flex>
         <Flex>
           <Image src={ candidate.avatar} />
