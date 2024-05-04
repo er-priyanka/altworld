@@ -40,7 +40,12 @@ const CandidateList:React.FC<CandidateDataProps> = ({ data, setCandidate }) => {
     <Tbody>
         {
             data && data.map((el, i) =>(
-                <Tr key={i} onClick={()=>setCandidate(el)}>
+                <Tr
+                
+                _hover={{
+                    bgColor: "blackAlpha.100"
+                }} 
+                 key={i} onClick={()=>setCandidate(el)}>
                     <Td>
                         <Flex 
                         alignItems='center'
@@ -57,8 +62,9 @@ const CandidateList:React.FC<CandidateDataProps> = ({ data, setCandidate }) => {
                             >
                                 <Heading
                                 fontSize='14px'
+                                color="blackAlpha.800"
                                 >{el.name}</Heading>
-                                <Text fontSize='12px'>{el.email}</Text>
+                                <Text color="gray.500" fontSize='12px'>{el.email}</Text>
                             </Stack>
                         </Flex>
                     </Td>

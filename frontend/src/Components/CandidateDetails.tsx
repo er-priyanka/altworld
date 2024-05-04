@@ -40,13 +40,16 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
   }
 
   return (
-    <Flex>
+    <Flex w={'70%'}
+    bgColor='white'
+    padding='10px'
+    borderRadius='10px'
+    boxShadow='base'
+    gap='10px'
+    >
       <Stack
-        w={'68%'} 
-        bgColor='white'
-        padding='10px'
-        borderRadius='10px'
-        boxShadow='base'
+        w={'55%'} 
+       
         >
           <Flex
           alignItems='center' 
@@ -64,8 +67,8 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
                 textAlign='left'
                 gap='2px'
                 >
-                  <Heading fontSize='14px'>{candidate.name}</Heading>
-                  <Text fontSize='12px'>{candidate.email}</Text>
+                  <Heading color="blackAlpha.800" fontSize='14px'>{candidate.name}</Heading>
+                  <Text color="gray.500" fontSize='12px'>{candidate.email}</Text>
                 </Stack>
             </Flex>
 
@@ -83,9 +86,12 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
             justifyContent={'space-between'}
             alignItems={'center'}
             fontWeight='bold'
+            textAlign={'left'}
             >
               <Text
               color={'gray.500'}
+              w={'30%'}
+              fontSize={'14px'}
               >Behavioural</Text>
               <Progress
               width='50%'
@@ -103,9 +109,12 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
             justifyContent={'space-between'}
             alignItems={'center'}
             fontWeight='bold'
+            textAlign='left'
             >
               <Text
+              w={'30%'}
               color='gray.500'
+              fontSize={'14px'}
               >Communication</Text>
               <Progress borderRadius='15px' width={'50%'} value={candidate.communication * 10} />
               
@@ -119,10 +128,13 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
             justifyContent={'space-between'}
             alignItems={'center'}
             fontWeight='bold'
-            
+            textAlign={'left'}
             >
               <Text 
               color='gray.500'
+              w={'30%'}
+              // border="1px"
+              fontSize={'14px'}
               >Situation Handling</Text>
               {/* <Progress value={80} /> */}
               <Progress
@@ -133,32 +145,57 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
               
                />
               <Text 
+              
               color={(candidate["situation handling"]>6) ? "green.400" : "orange.400"}
               >{candidate["situation handling"]}/10</Text>
             </Flex>
               
           </Stack>
 
-          <Stack>
-            <Heading>About</Heading>
-            <Text>{candidate.about}</Text>
+          <Stack
+          textAlign={'left'}
+          marginTop='20px'
+          >
+            <Heading color="blackAlpha.800" fontSize={'1rem'}>About</Heading>
+            <Text fontSize={'14px'} color={'gray.500'}>{candidate.about}</Text>
           </Stack>
 
-          <Stack>
-            <Heading>Experience</Heading>
-            <Text>{candidate.experience}</Text>
+          <Stack textAlign={'left'}>
+            <Heading color="blackAlpha.800" fontSize={'1rem'}>Experience</Heading>
+            <Text fontSize={'14px'} color={'gray.500'}>{candidate.experience}</Text>
           </Stack>
-          <Stack>
-            <Heading>Hobbies</Heading>
-            <Text>{candidate.hobbies}</Text>
+          <Stack
+          textAlign={'left'}
+          >
+            <Heading color="blackAlpha.800" fontSize={'1rem'}>Hobbies</Heading>
+            <Text fontSize={'14px'} color={'gray.500'}>{candidate.hobbies}</Text>
           </Stack>
-          <Stack>
-            <Heading>Introduction</Heading>
-            <Text>{candidate.introduction}</Text>
+          <Stack           
+          textAlign={'left'}
+          >
+            <Heading color="blackAlpha.800" fontSize={'1rem'}>Introduction</Heading>
+            <Text fontSize={'14px'} color={'gray.500'}>{candidate.introduction}</Text>
           </Stack>
 
-          <Button>SHORTLIST</Button>
-        </Stack>
+          <Button 
+          w={'80%'}
+          margin={'20px auto'}
+          bgColor='#4FD1C5'
+          color='white'
+          _hover={{
+            bgColor: "teal.400"
+          }}
+          >SHORTLIST</Button>
+      </Stack>
+        <Box w={'45%'} >
+          <Image 
+          w={'100%'}
+          h={'100%'}
+          border="1px"
+          borderColor={'gray.50'}
+          borderRadius={'10px'}
+           src={candidate.avatar} />
+        </Box>
     </Flex>
     
   )

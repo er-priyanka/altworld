@@ -65,7 +65,7 @@ const Dashboard: React.FC = () => {
                         Pages / <span style={{color:'black'}}>Assignment</span>
                     </Text>
 
-                    <Heading fontSize='14px'>Sales BDE</Heading>
+                    <Heading color="blackAlpha.800" fontSize='14px'>Sales BDE</Heading>
                 </Stack>
 
                 <Flex
@@ -86,7 +86,7 @@ const Dashboard: React.FC = () => {
                         justifyContent='space-between'
                         alignItems='center'
                         >
-                            <Heading fontSize='1.1rem'>Sales BDE</Heading>
+                            <Heading color="blackAlpha.800" fontSize='1.1rem'>Sales BDE</Heading>
                             <Flex
                             alignItems='center'
                             gap='8px'
