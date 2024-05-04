@@ -7,7 +7,7 @@ import { IoMdAdd } from "react-icons/io";
 const Sidebar:React.FC = () => {
   return (
     <Stack 
-    w='20%'
+    w={{md:'20%'}}
     boxSizing='border-box'
     padding='25px'
     fontFamily={'sans-serif'}

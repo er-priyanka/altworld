@@ -1,11 +1,12 @@
-import { Box, Button, Container, Flex, Heading, Image, Stack, Tab, Table, TabList, TabPanel, TabPanels, Tabs, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Heading, Image, Show, Stack, Tab, Table, TabList, TabPanel, TabPanels, Tabs, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CandidateDetails from './CandidateDetails';
 import candidatesData from "../Data/db.json";
 import Sidebar from './Sidebar';
-import { MdEdit } from "react-icons/md";
+import { MdEdit, MdMenu } from "react-icons/md";
 import CandidateList from './CandidateList';
+import DrawerLayout from './DrawerLayout';
 
 // const data = [
 //     {
@@ -48,10 +49,16 @@ const Dashboard: React.FC = () => {
   return (
     <Box  bgColor="#F8F9FA">
         <Flex>
-            <Sidebar />
+            <Show above="md">
+                <Sidebar />
+            </Show>
+            
+            <Show below='md'>
+                <DrawerLayout />
+            </Show>
 
             <Box
-            w={'80%'}
+            w={{base:'100%', md:'80%'}}
             padding='20px' 
             >
                 <Stack 
@@ -71,7 +78,9 @@ const Dashboard: React.FC = () => {
                 <Flex
                 padding='20px 0'
                 gap={'10px'}
+                
                 // border={'1px'}
+                direction={{base:'column', md:'row'}}
                 >
                     {/* first stack */}
                     <Stack 

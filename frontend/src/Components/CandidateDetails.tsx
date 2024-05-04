@@ -40,15 +40,16 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
   }
 
   return (
-    <Flex w={'70%'}
+    <Flex w={{base:"100%", md:'70%'}}
     bgColor='white'
     padding='10px'
     borderRadius='10px'
     boxShadow='base'
     gap='10px'
+    direction={{base:'column', md:"row"}}
     >
       <Stack
-        w={'55%'} 
+        w={{base:'100%', md:'55%'}} 
        
         >
           <Flex
@@ -187,7 +188,8 @@ const CandidateDetails: React.FC<CandidateDetailsProps> = ({ candidate }) => {
           }}
           >SHORTLIST</Button>
       </Stack>
-        <Box w={'45%'} >
+
+        <Box w={{base:'100%', md:'45%'}} >
           <Image 
           w={'100%'}
           h={'100%'}
